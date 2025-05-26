@@ -1,202 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Todo App - Plan & Organize Your Tasks</title>
-
-  <!-- ✅ SEO Meta Tags -->
-  <meta name="description" content="Stay organized and productive with our simple Todo app. Add, edit, and track your tasks with ease." />
-  <meta name="keywords" content="todo, task manager, productivity, daily planner, schedule" />
-  <meta name="author" content="TodoApp" />
-  <meta property="og:title" content="Todo App - Task Manager" />
-  <meta property="og:description" content="Free and simple Todo app to help you stay productive!" />
-  <meta property="og:type" content="website" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- ✅ Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-  <!-- ✅ Google Ads (Ensure Your Publisher ID is Correct) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8149507764464883" crossorigin="anonymous"></script>
-
-  <!-- ✅ Basic Styling -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      background-color: #2d3436;
-      color: white;
-      padding: 20px;
-    }
-
-    main {
-      padding: 20px;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .grid-Item {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    #todoInput, #todoDate {
-      font-size: 15px;
-      padding: 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-
-    .btn-add, .btn-delete {
-      padding: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .btn-add {
-      background-color: green;
-      color: white;
-    }
-
-    .btn-delete {
-      background-color: darkred;
-      color: white;
-    }
-
-    .task-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
-      gap: 10px;
-      margin-bottom: 10px;
-      background: white;
-      padding: 10px;
-      border-radius: 4px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 20%;
-      left: 10%;
-      width: 80%;
-      background-color: white;
-      border: 1px solid #ccc;
-      padding: 20px;
-      z-index: 1000;
-    }
-
-    .modal-show {
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Todo App - Organize Tasks, Boost Productivity</title>
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="description" content="Transform your productivity with our advanced Todo app featuring task categories, priorities, due dates, and performance analytics. Start organizing your life better today!">
+    <meta name="keywords" content="todo app, task manager, productivity tool, time management, task organizer, project planning">
+    <meta name="author" content="Ramlal Sharma">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Advanced Todo App - Professional Task Management">
+    <meta property="og:description" content="Feature-rich task management application with categories, priorities, and analytics">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8149507764464883"
+     crossorigin="anonymous"></script>
 </head>
-
 <body>
-  <header>
-    <h1>TODO APP</h1>
-    <p>Plan your tasks and boost productivity</p>
-  </header>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Todo App Logo">
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Dashboard</a>
+            <a href="pages/features.html">Features</a>
+            <a href="pages/about.html">About</a>
+            <div class="theme-toggle">
+                <button id="themeSwitch">🌓</button>
+            </div>
+        </div>
+    </nav>
 
-  <main>
-    <div class="grid-Item">
-      <input id="todoInput" type="text" placeholder="Enter a new task" />
-      <input id="todoDate" type="date" />
-      <button class="btn-add" onclick="addToDo()">Add</button>
-    </div>
+    <!-- Main Content -->
+    <main>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="categories">
+                <h3>Categories</h3>
+                <ul id="categoryList">
+                    <!-- Dynamically populated -->
+                </ul>
+                <button id="addCategory" class="btn-secondary">+ New Category</button>
+            </div>
+            
+            <!-- Statistics Widget -->
+            <div class="statistics-widget">
+                <h3>Your Progress</h3>
+                <div id="statsChart"></div>
+            </div>
+        </aside>
 
-    <div id="taskContainer"></div>
+        <!-- Task Area -->
+        <section class="task-area">
+            <!-- Top Ad Placement -->
+            <div class="ad-container-top">
+                <!-- AdSense Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8149507764464883"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
 
-    <!-- Hidden sections required by Google Ads -->
-    <button onclick="toggleModal('privacyModal')">Privacy Policy</button>
-    <button onclick="toggleModal('aboutModal')">About Us</button>
+            <!-- Task Input -->
+            <div class="task-input">
+                <input type="text" id="todoInput" placeholder="What needs to be done?">
+                <input type="date" id="todoDate">
+                <select id="todoPriority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <select id="todoCategory">
+                    <!-- Dynamically populated -->
+                </select>
+                <button id="addTask" class="btn-primary">Add Task</button>
+            </div>
 
-    <div id="privacyModal" class="modal">
-      <h3>Privacy Policy</h3>
-      <p>This app does not collect any personal data. Your tasks are stored locally in your browser.</p>
-      <button onclick="toggleModal('privacyModal')">Close</button>
-    </div>
+            <!-- Task Filters -->
+            <div class="task-filters">
+                <select id="filterPriority">
+                    <option value="all">All Priorities</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+                <select id="filterCategory">
+                    <option value="all">All Categories</option>
+                    <!-- Dynamically populated -->
+                </select>
+                <input type="date" id="filterDate" placeholder="Filter by date">
+                <button id="clearFilters" class="btn-secondary">Clear Filters</button>
+            </div>
 
-    <div id="aboutModal" class="modal">
-      <h3>About Us</h3>
-      <p>TodoApp is a lightweight productivity tool designed to help you manage your daily tasks efficiently.</p>
-      <button onclick="toggleModal('aboutModal')">Close</button>
-    </div>
-  </main>
+            <!-- Task List -->
+            <div id="taskList" class="task-list">
+                <!-- Dynamically populated -->
+            </div>
 
-  <footer>
-    &copy; 2025 TodoApp. All rights reserved.
-  </footer>
+            <!-- Bottom Ad Placement -->
+            <div class="ad-container-bottom">
+                <!-- AdSense Ad Unit -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8149507764464883"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </section>
+    </main>
 
-  <!-- ✅ JavaScript -->
-  <script>
-    let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
-
-    function addToDo() {
-      const input = document.getElementById("todoInput");
-      const date = document.getElementById("todoDate");
-
-      const task = input.value.trim();
-      const taskDate = date.value;
-
-      if (!task || !taskDate) {
-        alert("Please fill in both fields.");
-        return;
-      }
-
-      todoList.push({ item: task, date: taskDate });
-      localStorage.setItem("todoList", JSON.stringify(todoList));
-      input.value = "";
-      date.value = "";
-      displayItems();
-    }
-
-    function deleteItem(index) {
-      if (confirm("Delete this task?")) {
-        todoList.splice(index, 1);
-        localStorage.setItem("todoList", JSON.stringify(todoList));
-        displayItems();
-      }
-    }
-
-    function displayItems() {
-      const container = document.getElementById("taskContainer");
-      container.innerHTML = "";
-      todoList.forEach((todo, index) => {
-        container.innerHTML += `
-          <div class="task-row">
-            <span>${todo.item}</span>
-            <span>${todo.date}</span>
-            <button class="btn-delete" onclick="deleteItem(${index})">Delete</button>
-          </div>
-        `;
-      });
-    }
-
-    function toggleModal(id) {
-      const modal = document.getElementById(id);
-      modal.classList.toggle("modal-show");
-    }
-
-    // Initial display
-    displayItems();
-  </script>
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/statistics.js"></script>
+    <script src="js/ads.js"></script>
 </body>
 </html>
